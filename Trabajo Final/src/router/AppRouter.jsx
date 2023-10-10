@@ -1,12 +1,13 @@
 import {BrowserRouter as Router,Routes, Route} from"react-router-dom"
-import Home from "../pages/HomePage"
+import Home from "../Pages/Home"
 import Footer from "../components/Footer";
-import NavbarComp from "../components/Navbar";
+import NavScroll from "../components/Navbar";
+
 
 function AppRouter() {
     return(
         <Router>
-            <NavbarComp/>
+            <NavScroll/>
             <Routes>
                 <Route path="" element={<Home/>}/>
                 

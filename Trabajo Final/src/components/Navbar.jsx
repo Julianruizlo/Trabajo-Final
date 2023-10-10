@@ -1,41 +1,57 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-export default function NavbarComp(){
-    return(
-        <>
-         <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+
+
+function NavScroll() {
+  return (
+    <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
+      <Container fluid>
+        <Navbar.Brand href="#">Netflix</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            
+            <Nav.Link href="#action1">Inicio</Nav.Link>
+            <Nav.Link href="#action2">Sobre nosotros</Nav.Link>
+            <NavDropdown title="Categorias" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Accion</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+               Terror
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item href="#action5">
+                Something else here
               </NavDropdown.Item>
             </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+            <Nav.Link href="#" disabled>
+              Planes de pago
+          
             </Nav.Link>
           </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Buscar"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-        
-        </>
-    );
+  );
 }
+
+export default NavScroll;

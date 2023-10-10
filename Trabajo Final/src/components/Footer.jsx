@@ -4,13 +4,13 @@ import {faFacebook,faInstagram,faTwitter,faLinkedin} from "@fortawesome/free-bra
 function Footer() {
     return(
         <>
-      <footer className="page-footer font-small pt-4 footer" data-bs-theme="dark" >
+      <footer className="page-footer font-small pt-4 footer"  >
       <div className="container-fluid text-center text-md-left pt-5 mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6 mt-md-0 mt-3">
             <h5 className="text-uppercase">Información de Contacto</h5>
             <p>+54 9 (381) 155555555</p>
-            <p>info@cryptoexchange.com</p>
+            <p>info@pelis.com</p>
             <p>San Martín 204, San Miguel de Tucumán</p>
           </div>
           <div className="col-md-3 mb-md-0 mb-3 footer-links">
@@ -31,7 +31,7 @@ function Footer() {
       </div>
       <div className="footer-copyright text-center py-3">
         © 2022 Copyright:
-        <a href="">cryptoexchange.com</a>
+        <a href="">peliculas.com</a>
       </div>
     </footer>
         </>
