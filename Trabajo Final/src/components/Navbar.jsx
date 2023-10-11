@@ -13,7 +13,7 @@ function NavScroll() {
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
       <Container fluid>
-        <Navbar.Brand href="#">Netflix</Navbar.Brand>
+        <Navbar.Brand >Netflix</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -22,7 +22,7 @@ function NavScroll() {
             navbarScroll
           >
             
-            <Nav.Link href="#action1">Inicio</Nav.Link>
+            <Nav.Link to={""}>Inicio</Nav.Link>
             <Nav.Link href="#action2">Sobre nosotros</Nav.Link>
             <NavDropdown title="Categorias" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Accion</NavDropdown.Item>

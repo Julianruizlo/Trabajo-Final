@@ -1,10 +1,18 @@
+import MoviesGrid from "../components/MoviesGrid"
+import homestyle from "../modules/Home.module.css"
 function Home()
 {
     return(
+        <>
+        <header>
+                <h1 className = {homestyle.title}>Peliculas</h1>
+                </header>
         <main>
-              <h1>Este es el home</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, aperiam!</p>
+
+        <MoviesGrid/>
+                
         </main>
+        </>
     );
 }
 export default Home
