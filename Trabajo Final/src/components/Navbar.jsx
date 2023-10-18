@@ -6,14 +6,15 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Logo from "../Images/De-Pelicula-Plus-Logo.png"
 
 
-
+const Logotipo = Logo;
 function NavScroll() {
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
       <Container fluid>
-        <Navbar.Brand >Netflix</Navbar.Brand>
+        <Navbar.Brand ><img src={Logotipo} alt="Logo" width={'100px'}  /></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -22,7 +23,7 @@ function NavScroll() {
             navbarScroll
           >
             
-            <Nav.Link to={""}>Inicio</Nav.Link>
+            <Nav.Link to={"Home"}>Inicio</Nav.Link>
             <Nav.Link href="#action2">Sobre nosotros</Nav.Link>
             <NavDropdown title="Categorias" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Accion</NavDropdown.Item>

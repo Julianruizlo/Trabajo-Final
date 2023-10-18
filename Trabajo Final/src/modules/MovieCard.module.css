@@ -2,6 +2,7 @@
     list-style:  none;
     font-size: 1.5rem;
     text-align: center;
+    cursor: pointer;
 }
 .movieImage {
     border-radius: 10px;
