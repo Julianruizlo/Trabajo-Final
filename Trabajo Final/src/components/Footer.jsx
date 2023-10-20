@@ -25,7 +25,7 @@ function Footer() {
             </a>
             <a href="#!">
             <FontAwesomeIcon icon={faLinkedin} />
-            </a>*/
+            </a>
           </div>
         </div>
       </div>

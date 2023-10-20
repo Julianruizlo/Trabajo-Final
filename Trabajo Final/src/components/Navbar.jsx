@@ -23,10 +23,10 @@ function NavScroll() {
             navbarScroll
           >
             
-            <Nav.Link to={"Home"}>Inicio</Nav.Link>
-            <Nav.Link href="#action2">Sobre nosotros</Nav.Link>
+            <Link className="nav-link" to={""} >Inicio</Link>
+            <Nav.Link to ="#action2">Sobre nosotros</Nav.Link>
             <NavDropdown title="Categorias" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Accion</NavDropdown.Item>
+              <NavDropdown.Item Link to ={"#action3"}>Accion</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                Terror
               </NavDropdown.Item>
