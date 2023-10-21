@@ -17,3 +17,7 @@
         height: auto;
     }
 }
+.link-no-underline {
+    text-decoration: none; 
+    color: inherit; 
+  }

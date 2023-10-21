@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -7,10 +6,25 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from "../Images/De-Pelicula-Plus-Logo.png"
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { useQuery } from "../hooks/useQuery";
 
 
 const Logotipo = Logo;
 function NavScroll() {
+  const query = useQuery();
+  const search = query.get("search");
+
+  const [searchText, setSearchText] = useState("");
+  const history = useHistory();
+  useEffect(() => {
+    setSearchText(search || "");
+  }, [search]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push("/?search=" + searchText);
+  };
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
       <Container fluid>
@@ -46,6 +60,9 @@ function NavScroll() {
               placeholder="Buscar"
               className="me-2"
               aria-label="Search"
+              onSubmit={handleSubmit}
+              value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
             />
             <Button variant="outline-success">Search</Button>
           </Form>

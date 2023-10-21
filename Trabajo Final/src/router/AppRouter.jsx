@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 import NavScroll from "../components/Navbar";
 import SignInPage from "../Pages/SignIn";
 import RequireAuth from "./RequireAuth";
-import { MovieDetails } from "../components/MovieDetails";
+import { MovieDetails } from "../Pages/MovieDetails";
+import { LandingPage } from "../Pages/LandingPage";
 
 
 
@@ -15,9 +16,11 @@ function AppRouter() {
         <Router>
             <NavScroll/>
             <Routes>
-                <Route path="SignInPage" element={<SignInPage/>}/>
-                <Route path="" element={<RequireAuth isLogged={true} children={<Home />} /> }/>
-                <Route  path="/movie" element={<MovieDetails/>}/>
+                <Route path="" element={<SignInPage/>}/>
+                <Route path="Home" element={<Home />} />
+                <Route exact path="/movie" element={<LandingPage />}  />
+                <Route exact path="/movie/:movieId" element={<MovieDetails/>}/>
+                
             </Routes>
             <Footer/>    
         </Router>
