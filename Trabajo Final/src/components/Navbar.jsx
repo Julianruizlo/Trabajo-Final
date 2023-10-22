@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from "../Images/De-Pelicula-Plus-Logo.png"
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { useQuery } from "../hooks/useQuery";
 
 
@@ -17,13 +17,14 @@ function NavScroll() {
   const search = query.get("search");
 
   const [searchText, setSearchText] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     setSearchText(search || "");
   }, [search]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/?search=" + searchText);
+    navigate("/?search=" + searchText);
+    
   };
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
@@ -54,18 +55,20 @@ function NavScroll() {
           
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSubmit}> 
             <Form.Control
               type="search"
               placeholder="Buscar"
               className="me-2"
               aria-label="Search"
-              onSubmit={handleSubmit}
               value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+              onChange={(e) => setSearchText(e.target.value)}
+             
             />
-            <Button variant="outline-success">Search</Button>
+            
+            <Button  variant="outline-danger" >Search</Button>
           </Form>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

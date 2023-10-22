@@ -22,7 +22,8 @@ export function MoviesGrid() {
         setIsLoading(false);
       });
     }, [search]);
-  
+    
+    
     if (isLoading) {
       return <Spinner />;
     }
