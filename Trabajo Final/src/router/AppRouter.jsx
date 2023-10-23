@@ -16,7 +16,7 @@ function AppRouter() {
         <Router>
             <NavScroll/>
             <Routes>
-                <Route path="" element={<SignInPage/>}/>
+                
                 <Route path="Home" element={<Home />} />
                 <Route exact path="/movie" element={<LandingPage />}  >
                     <Route exact path="/movie/:movieId" element={<MovieDetails/>}/>

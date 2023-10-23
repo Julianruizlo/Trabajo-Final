@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Message, Button, Input, Label } from "../components/ui";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../schemas/auth";
+
+import Form from 'react-bootstrap/Form';
 
 
 function SignUp() {
@@ -26,67 +27,47 @@ function SignUp() {
   }, [isAuthenticated]);
 
   return (
-    <div className="h-[calc(100vh-100px)] flex items-center justify-center">
-      <Card>
-        {registerErrors.map((error, i) => (
-          <Message message={error} key={i} />
-        ))}
-        <h1 className="text-3xl font-bold">Register</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Label htmlFor="username">Username:</Label>
-          <Input
-            type="text"
-            name="username"
-            placeholder="Write your name"
-            {...register("username")}
-            autoFocus
-          />
-          {errors.username?.message && (
-            <p className="text-red-500">{errors.username?.message}</p>
-          )}
-
-          <Label htmlFor="email">Email:</Label>
-          <Input
-            name="email"
-            placeholder="youremail@domain.tld"
-            {...register("email")}
-          />
-          {errors.email?.message && (
-            <p className="text-red-500">{errors.email?.message}</p>
-          )}
-
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            type="password"
-            name="password"
-            placeholder="********"
-            {...register("password")}
-          />
-          {errors.password?.message && (
-            <p className="text-red-500">{errors.password?.message}</p>
-          )}
-
-          <Label htmlFor="confirmPassword">Confirm Password:</Label>
-          <Input
-            type="password"
-            name="confirmPassword"
-            placeholder="********"
-            {...register("confirmPassword")}
-          />
-          {errors.confirmPassword?.message && (
-            <p className="text-red-500">{errors.confirmPassword?.message}</p>
-          )}
-          <Button>Submit</Button>
-        </form>
-        <p>
-          Already Have an Account?
-          <Link className="text-sky-500" to="/login">
-            Login
-          </Link>
-        </p>
-      </Card>
-    </div>
-  );
+    <>
+    <Form.Floating Submit={handleSubmit(onSubmit)} className="mb-3">
+    <Form.Control
+      id="floatingInputCustom"
+      type="text"
+      placeholder="UserName"
+    />
+    <label {...register("username")} htmlFor="floatingInputCustom">UserName</label>
+    {errors.username?.message && (
+        <p className="text-red-500">{errors.username?.message}</p>
+      )}
+  </Form.Floating>
+  <Form.Floating>
+  <Form.Control
+  id="floatingInputCustom"
+  type="email"
+  placeholder="name@example.com"
+/>
+<label {...register("email")} htmlFor="floatingInputCustom">Email Adress</label>
+{registerErrors.map((error, i) => (
+      <Message message={error} key={i} />
+    ))}
+</Form.Floating>
+  <Form.Floating>
+    <Form.Control
+      id="floatingPasswordCustom"
+      type="password"
+      placeholder="Password"
+    />
+    <label{...register("password")} htmlFor="floatingPasswordCustom">Password</label>
+    {errors.password?.message && (
+      <p className="text-red-500">{errors.password?.message}</p>
+    )}
+  </Form.Floating>
+  <p>
+      Already Have an Account?
+      <Link  to="/login">
+        Login
+      </Link>
+    </p>
+</>
+);
 }
-
 export default SignUp;

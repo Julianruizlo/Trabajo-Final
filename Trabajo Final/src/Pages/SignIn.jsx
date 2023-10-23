@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 const { body, validationResult } = require('express-validator');
-import { Card, Message, Button, Input, Label } from "../components/ui";
 import { loginSchema } from "../schemas/auth";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export function SignInPage() {
   const {
@@ -24,42 +25,40 @@ export function SignInPage() {
       navigate("/movie");
     }
   }, [isAuthenticated]);
+  
+  {loginErrors.map((error, i) => (
+    <Message message={error} key={i} />
+    ))}
 
+      
+
+function BasicExample() {
   return (
-    <div className="h-[calc(100vh-100px)] flex items-center justify-center">
-      <Card>
-        {loginErrors.map((error, i) => (
-          <Message message={error} key={i} />
-        ))}
-        <h1 className="text-2xl font-bold">Login</h1>
+   
+    <Form  onSubmit={handleSubmit(onSubmit)}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control {...register("email", { required: true })} type="email" placeholder="Enter email" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Label htmlFor="email">Email:</Label>
-          <Input
-            label="Write your email"
-            type="email"
-            name="email"
-            placeholder="youremail@domain.tld"
-            {...register("email", { required: true })}
-          />
-          <p>{errors.email?.message}</p>
-
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Write your password"
-            {...register("password", { required: true, minLength: 6 })}
-          />
-          <p>{errors.password?.message}</p>
-
-          <Button>Login</Button>
-        </form>
-
-        <p className="flex gap-x-2 justify-between">
-          Don't have an account? <Link to="/register" className="text-sky-500">Sign up</Link>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control {...register("password", { required: true })}type="password" placeholder="Password" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+      <p >
+          Don't have an account? <Link to="/register" >Sign up</Link>
         </p>
-      </Card>
-    </div>
+    </Form>
   );
 }
+}
+export default BasicExample;
