@@ -12,12 +12,12 @@ function Carrousel() {
       const movies = async () => {
         const response = await fetch(
             get(movie).then((data) => {
+              
+              setMovies(data.results);
                 
-                
-              });
+              })
         );
         const data = await response.json();
-        setMovies(data.results);
       };
       console.log(getRelatedMovies);
   return (
