@@ -2,8 +2,8 @@ import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
-const { body, validationResult } = require('express-validator');
-import { loginSchema } from "../schemas/auth";
+
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -13,7 +13,7 @@ export function SignInPage() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: validationResult(loginSchema),
+   
   });
   const { signin, errors: loginErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export function SignInPage() {
 
       
 
-function BasicExample() {
+
   return (
    
     <Form  onSubmit={handleSubmit(onSubmit)}>
@@ -60,5 +60,5 @@ function BasicExample() {
     </Form>
   );
 }
-}
-export default BasicExample;
+
+export default SignInPage;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "../schemas/auth";
+
 
 import Form from 'react-bootstrap/Form';
 

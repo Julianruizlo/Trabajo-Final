@@ -6,6 +6,7 @@ import SignInPage from "../Pages/SignIn";
 import RequireAuth from "./RequireAuth";
 import { MovieDetails } from "../Pages/MovieDetails";
 import { LandingPage } from "../Pages/LandingPage";
+import SignUp from "../Pages/SignUp";
 
 
 
@@ -14,9 +15,12 @@ import { LandingPage } from "../Pages/LandingPage";
 function AppRouter() {
     return(
         <Router>
-            <NavScroll/>
+            
             <Routes>
-                
+            <Route path="SignInPage" element={<SignInPage />}/>
+            <Route path="SignUp" element={<SignUp />}/>
+            <NavScroll/>
+            <Route element={<RequireAuth />}/>
                 <Route path="Home" element={<Home />} />
                 <Route exact path="/movie" element={<LandingPage />}  >
                     <Route exact path="/movie/:movieId" element={<MovieDetails/>}/>
