@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Popins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+    background-image:linear-gradient(to right,transparent 10%, black 100%),url(back.jpg);
+    background-size: cover;
+    background-position: center;
+}
