@@ -1,47 +1,52 @@
-import Carousel from 'react-bootstrap/Carousel';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { get } from "../utils/httpClient";
+import Carousel from 'react-bootstrap/Carousel';
+import { Spinner } from "./Spinner";
+import { getMovieImg } from "../utils/getMovieImg";
 
-const imageUrl = `https://image.tmdb.org/t/p/origin ${movies.backdrop_path}`
 function Carrousel() {
-    useEffect(() => {
-        const [movies, setMovies] = useState([]);
-      }, []);
+ 
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
     
-      const movies = async () => {
-        const response = await fetch(
-            get(movies).then((data) => {
-              
-              setMovies(data.results);
-                
-              })
-        );
-        const data = await response.json();
-      };
-      console.log(getRelatedMovies);
+    
+  }, []);
+  const fetchData = async () => { const response = await get();
+    setMovies(response.data.data);
+    setIsLoading(false);
+  }
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+
+
   return (
-    <Carousel>
+    <Carousel fade>
       <Carousel.Item>
-        <img src={imageUrl}
-        />
+        <img src={movie} alt="" />
         <Carousel.Caption>
-          <h3>{movie.title}</h3>
-          <p>{movie.overview}</p>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={imageUrl}/>
+        <ExampleCarouselImage text="Second slide" />
         <Carousel.Caption>
-          <h3>{movie.title}</h3>
-          <p>{movie.overview}</p>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={imageUrl} />
+        <ExampleCarouselImage text="Third slide" />
         <Carousel.Caption>
-          <h3>{movie.title}</h3>
+          <h3>Third slide label</h3>
           <p>
-          {movie.overview}
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

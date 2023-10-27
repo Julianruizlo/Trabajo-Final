@@ -9,4 +9,30 @@ color: #fff;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073,
     0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
 }
+.container{
+    margin: 100px;
+    display: inline-flex;
 
+}
+
+.card{
+    display: flex;
+    height: 280px;
+    width: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: -1rem o 3rem;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+a {
+    text-decoration: none;
+    color: white;
+  }

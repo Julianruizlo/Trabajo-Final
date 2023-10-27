@@ -8,23 +8,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from "../Images/De-Pelicula-Plus-Logo.png"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useQuery } from "../hooks/useQuery";
+import { useDebounce } from "../hooks/useDebounce";
+import { useSearchParams } from "react-router-dom";
 
 
 const Logotipo = Logo;
 function NavScroll() {
-  const query = useQuery();
+  const [query, setQuery] = useSearchParams();
   const search = query.get("search");
 
-  const [searchText, setSearchText] = useState("");
-  const navigate = useNavigate();
-  useEffect(() => {
-    setSearchText(search || "");
-  }, [search]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/?search=" + searchText);
-    
   };
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
@@ -39,7 +33,7 @@ function NavScroll() {
           >
             
             <Link className="nav-link" to={""} >Inicio</Link>
-            <Nav.Link to ="#action2">Sobre nosotros</Nav.Link>
+            <Link className="nav-link" to={"/movie"}>Peliculas</Link>
             <NavDropdown title="Categorias" id="navbarScrollingDropdown">
               <NavDropdown.Item Link to ={"#action3"}>Accion</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -55,14 +49,18 @@ function NavScroll() {
           
             </Nav.Link>
           </Nav>
-          <Form className="d-flex" onSubmit={handleSubmit}> 
+          <Form className="d-flex"  onSubmit={handleSubmit}> 
             <Form.Control
               type="search"
               placeholder="Buscar"
               className="me-2"
               aria-label="Search"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+    
+                setQuery({ search: value });
+                
+              }}
              
             />
             
