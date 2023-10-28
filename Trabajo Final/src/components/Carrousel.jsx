@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { get } from "../utils/httpClient";
+
 import Carousel from 'react-bootstrap/Carousel';
-import { Spinner } from "./Spinner";
+
 import { getMovieImg } from "../utils/getMovieImg";
 
-function Carrousel() {
- 
+
+function MovieContainer() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,36 +21,37 @@ function Carrousel() {
   if (isLoading) {
     return <Spinner />;
   }
-
-
-
-  return (
-    <Carousel fade>
-      <Carousel.Item>
-        <img src={movie} alt="" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <ExampleCarouselImage text="Second slide" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <ExampleCarouselImage text="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  );
+  
+ 
+  const imageUrl = getMovieImg(movie.poster_path, 500);
+  return (    
+     <Carousel fade>
+    <Carousel.Item>
+      <img src={imageUrl} />
+      <Carousel.Caption>
+        <h3>{movie.title}</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item>
+      <ExampleCarouselImage text="Second slide" />
+      <Carousel.Caption>
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item>
+      <ExampleCarouselImage text="Third slide" />
+      <Carousel.Caption>
+        <h3>Third slide label</h3>
+        <p>
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+        </p>
+      </Carousel.Caption>
+    </Carousel.Item>
+  </Carousel>
+);
 }
 
-export default Carrousel;
+
+export default MovieContainer;

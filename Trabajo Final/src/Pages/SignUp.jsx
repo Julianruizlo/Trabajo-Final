@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios"
 
 
+
 function SignUp() {
   const [name,setName] = useState ()
   const [email,setEmail]=useState()
@@ -13,50 +14,46 @@ function SignUp() {
 
   const handleSubmit = (e)=> {
     e.preventDefauelt()
-    axios.post('http://127.0.0.1:8000/users',{name,email,password})
+    axios.post('http://127.0.0.1:8000/users',{username,email,password})
     .then(result => consolge.log(result))
     .catch(err => console.log(err))
   }
  
   return (
-    <>
-    <Form.Floating  className="mb-3">
-    <Form.Control
-      id="floatingInputCustom"
-      type="text"
-      placeholder="UserName"
-      onChange={(e) => setName(e.target.value)}
-    />
-    <label  htmlFor="floatingInputCustom">UserName</label>
-    
-  </Form.Floating>
-  <Form.Floating>
-  <Form.Control
-  id="floatingInputCustom"
-  type="email"
-  placeholder="name@example.com"
-  onChange={(e) => setEmail(e.target.value)}
-/>
-<label  htmlFor="floatingInputCustom">Email Adress</label>
+    <Form>
+<Form.Group className="mb-3" controlId="formBasicEmail">
+  <Form.Label>Username</Form.Label>
+  <Form.Control onChange={(e) => setName(e.target.value)}  type="text" placeholder="Enter Username" />
+  <Form.Text className="text-muted">
+  This name is what all other users will see you with
+  </Form.Text>
 
-</Form.Floating>
-  <Form.Floating>
-    <Form.Control
-      id="floatingPasswordCustom"
-      type="password"
-      placeholder="Password"
-      onChange={(e) => setPassword(e.target.value)}
-    />
-    <label htmlFor="floatingPasswordCustom">Password</label>
-   
-  </Form.Floating>
-  <p>
-      Already Have an Account?
-      <Link  to="/SignInPage">
-        Login
-      </Link>
-    </p>
-</>
+</Form.Group>
+<Form.Group className="mb-3" controlId="formBasicEmail">
+  <Form.Label>Email address</Form.Label>
+  <Form.Control onChange={(e) => { setEmail(e.target.value) }}  type="email" placeholder="Enter email" />
+  <Form.Text className="text-muted">
+    We'll never share your email with anyone else.
+  </Form.Text>
+</Form.Group>
+
+<Form.Group className="mb-3" controlId="formBasicPassword">
+  <Form.Label>Password</Form.Label>
+  <Form.Control onChange={(e) => { setPassword(e.target.value) }} type="password" placeholder="Password" />
+</Form.Group>
+<Form.Group className="mb-3" controlId="formBasicCheckbox">
+  <Form.Check type="checkbox" label="Check me out" />
+</Form.Group>
+<Button variant="primary" type="submit">
+  Submit
+</Button>
+<p >
+Already Have an Account? <Link to="/SignInPage" >Sign up</Link>
+  </p>
+</Form>
 );
 }
+   
+
 export default SignUp;
+

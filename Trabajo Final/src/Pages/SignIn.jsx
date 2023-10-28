@@ -1,50 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
 
-export function SignInPage() {
-  const history=useNavigate();
 
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
+export function SignInPage() {
+  const [count, setCount] = useState(0)
+
+
   const getUser = async () => {
     const users = await axios.get("http://127.0.0.1:8000/users")
     console.log(users.data);
   }
 
-  async function submit(e){
-      e.preventDefault();
-
-      try{
-
-          await axios.post("http://localhost:8000/",{
-              email,password
-          })
-          .then(res=>{
-              if(res.data=="exist"){
-                  history("/home",{state:{id:email}})
-              }
-              else if(res.data=="notexist"){
-                  alert("User have not sign up")
-              }
-          })
-          .catch(e=>{
-              alert("wrong details")
-              console.log(e);
-          })
-
-      }
-      catch(e){
-          console.log(e);
-
-      }
-
+  const login = async () => {
+    const user = {
+      username: "user1",
+      password: "user1"
+    }
+    const login = await axios.post("http://127.0.0.1:8000/login", user)
+    console.log(login);
   }
+  getUser();
   return (
    
     <Form>
