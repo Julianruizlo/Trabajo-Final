@@ -9,29 +9,40 @@ import Form from 'react-bootstrap/Form';
 
 
 export function SignInPage() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState({ email: "", password: "" });
+	const [error, setError] = useState("");
 
+	const handleChange = ({ currentTarget: input }) => {
+		setData({ ...data, [input.name]: input.value });
+	};
 
-  const getUser = async () => {
-    const users = await axios.get("http://127.0.0.1:8000/users")
-    console.log(users.data);
-  }
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const url = "http://localhost:8080/api/auth";
+			const { data: res } = await axios.post(url, data);
+			localStorage.setItem("token", res.data);
+			window.location = "/";
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				setError(error.response.data.message);
+			}
+		}
+	};
 
-  const login = async () => {
-    const user = {
-      username: "user1",
-      password: "user1"
-    }
-    const login = await axios.post("http://127.0.0.1:8000/login", user)
-    console.log(login);
-  }
-  getUser();
+useEffect(() => {
+  axios.get("./data.json").then(response => setPersons(response.data));
+},[]);
   return (
    
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control onChange={(e) => { setEmail(e.target.value) }}  type="email" placeholder="Enter email" />
+        <Form.Label>Username</Form.Label>
+        <Form.Control  onChange={handleChange}  type="text" placeholder="Enter User" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -39,12 +50,12 @@ export function SignInPage() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control onChange={(e) => { setPassword(e.target.value) }} type="password" placeholder="Password" />
+        <Form.Control  onChange={handleChange} type="password" placeholder="Password" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button  variant="primary" type="submit">
         Submit
       </Button>
       <p >

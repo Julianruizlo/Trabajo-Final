@@ -21,9 +21,9 @@ function AppRouter() {
             <Route path="SignInPage" element={<SignInPage />}/>
                 <Route path="SignUp" element={<SignUp />}/>
             
-                <Route path="/"element={<RequireAuth isLogged={true} children ={<Home/>}  />}/>
-                <Route exact path="/movie" element={<RequireAuth isLogged={true} children ={<LandingPage/>}  />} />
-                <Route exact path="/movies/:movieId" element={<RequireAuth isLogged={true} children ={<MovieDetails/>}  />}/>
+                <Route path="/"element={<RequireAuth isLogged={false} children ={<Home/>}  />}/>
+                <Route exact path="/movie" element={<RequireAuth isLogged={false} children ={<LandingPage/>}  />} />
+                <Route exact path="/movies/:movieId" element={<RequireAuth isLogged={false} children ={<MovieDetails/>}  />}/>
                 <Route path="*" element={<ErrorPage/>} />
             </Routes>
             <Footer/>    
