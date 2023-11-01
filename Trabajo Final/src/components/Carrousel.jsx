@@ -1,54 +1,39 @@
-
+import {useState,useEffect} from "react";
 import Carousel from 'react-bootstrap/Carousel';
-
+import { Spinner } from "../components/Spinner";
 import { getMovieImg } from "../utils/getMovieImg";
+import { get } from "../utils/httpClient";
 
 
-function MovieContainer() {
+function MovieContainer({ search }) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchData();
-    
-    
-  }, []);
-  const fetchData = async () => { const response = await get();
-    setMovies(response.data.data);
-    setIsLoading(false);
-  }
+    const searchUrl = search
+      ? "/search/movie?query=" + search
+      : "/discover/movie?page=";
+    get(searchUrl).then((data) => {
+      setMovies((prevMovies) => prevMovies.concat(data.results));
+      console.log(movies)
+      setIsLoading(false);
+    });
 
+  }, []);
   if (isLoading) {
     return <Spinner />;
   }
-  
- 
-  const imageUrl = getMovieImg(movie.poster_path, 500);
   return (    
      <Carousel fade>
-    <Carousel.Item>
-      <img src={imageUrl} />
+      {movies&& movies.map(movie => (
+        <Carousel.Item>
+      <img src={getMovieImg(movie.backdrop_path, 500)} />
       <Carousel.Caption>
         <h3>{movie.title}</h3>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </Carousel.Caption>
     </Carousel.Item>
-    <Carousel.Item>
-      <ExampleCarouselImage text="Second slide" />
-      <Carousel.Caption>
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </Carousel.Caption>
-    </Carousel.Item>
-    <Carousel.Item>
-      <ExampleCarouselImage text="Third slide" />
-      <Carousel.Caption>
-        <h3>Third slide label</h3>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
-      </Carousel.Caption>
-    </Carousel.Item>
+      ))}
   </Carousel>
 );
 }

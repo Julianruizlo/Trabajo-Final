@@ -9,7 +9,7 @@ export function LandingPage() {
   const search = query.get("search");
   const debouncedSearch = useDebounce(search, 300);
   return (<div>
-          <Carousel/>
+          <Carousel  search={debouncedSearch}/>
           <MoviesGrid key={debouncedSearch} search={debouncedSearch}  />
         </div>
   );
