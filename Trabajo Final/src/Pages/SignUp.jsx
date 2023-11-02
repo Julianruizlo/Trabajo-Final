@@ -15,7 +15,7 @@ function SignUp() {
 
   const handleSubmit = (e)=> {
     e.preventDefauelt()
-    axios.post('http://127.0.0.1:8000/users',{username,email,password})
+    axios.post('http://127.0.0.1:8000/register',{username,email,password})
     .then(result => {console.log(result)
       navigate("/SignInPage")
     })
@@ -56,7 +56,7 @@ function SignUp() {
   Submit
 </Button>
 <p >
-Already Have an Account? <Link to="/SignInPage" >Sign up</Link>
+Already Have an Account? <Link to="/SignInPage" >Sign In</Link>
   </p>
 </Form>
 );

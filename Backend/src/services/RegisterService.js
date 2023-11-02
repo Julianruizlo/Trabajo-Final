@@ -4,6 +4,11 @@ const { v4: uuidv4 } = require("uuid");
 const userModel = mongoose.model("User", User);
 const bcrypt = require("bcrypt");
 
+
+const registeAllUser = async () => {
+    return await userModel.find({});
+}
+
 const Register = async (user) => {
     try{
         const salt = bcrypt.genSaltSync(10);
@@ -23,4 +28,4 @@ const Register = async (user) => {
         return false;
     }
 }
-module.exports = { Register };
+module.exports = { Register,registeAllUser };
