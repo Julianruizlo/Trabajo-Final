@@ -3,7 +3,7 @@ const LoginService = require("../services/LoginService");
 const login = async (req, res) => {
     try{
     const response = await LoginService.login(req.body);
-    console.log(response)
+    console.log("respuesta login:",response)
     if(response){
         res.setHeader("Authorization", response);
         res.send()

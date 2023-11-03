@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const login = async (user) => {
     try{
+        console.log("usurio",user)
     const userResponse = await userModel.findOne({ username: `${user.username}` });
     let token = null;
     if(userResponse && bcrypt.compareSync(user.password, userResponse.password)){

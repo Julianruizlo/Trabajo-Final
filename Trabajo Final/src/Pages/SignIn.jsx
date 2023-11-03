@@ -4,31 +4,47 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Cookies from 'js-cookie';
+
+
 
 
 export function SignInPage() {
-  const [error, setError] = useState("");
-   const [count, setCount] = useState(0)
-   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const user = {
-        username: "user1",
-        password: "user1"
-      }
-      const login = await axios.post("http://127.0.0.1:8000/login", user);
-      console.log(login);
-    } catch (error) {
-      setError("An error occurred. Please try again later.");
-    }
+  const [username,setName] = useState ()
+ 
+  const [password,setPassword]=useState()
+  const navigate = useNavigate();
+
+ const handleChangeUsername = (event)=>  {
+    setName(event.target.value);
+  };
+  const handleChangePassword = (event)=>  {
+    setPassword(event.target.value);
   };
 
+  
+  const handleSubmit = (e)=> {
+    e.preventDefault()
+    const user = {
+      username: username,
+      password: password,
+      }
+   console.log("usuarios:",user)
+    axios.post('http://127.0.0.1:8000/login',user)
+    .then(result => {Cookies.set('user', result, { secure: true });
+    navigate("/");
+      console.log(user);
+
+    })
+    .catch(err => console.log(err))
+  }
+ 
   return (
    
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
-        <Form.Control  type="text" placeholder="Enter User" />
+        <Form.Control onChange={handleChangeUsername} type="text" placeholder="Enter User" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -36,7 +52,7 @@ export function SignInPage() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control   type="password" placeholder="Password" />
+        <Form.Control onChange={handleChangePassword}  type="password" placeholder="Password" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />

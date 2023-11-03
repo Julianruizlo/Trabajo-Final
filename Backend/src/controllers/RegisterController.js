@@ -23,7 +23,7 @@ const saveUser = async (req, res) => {
                 res.status(400).send(errorMessage);
             }
             else{
-                const response =registe.Register(req.body.name, req.body.description);
+                const response =registe.Register(req.body);
                 if (response) {
                     res.send("Usuario cargado");
                 }}

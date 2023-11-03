@@ -1,13 +1,17 @@
 import { Navigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 
-function RequireAuth({isLogged, children}) {
-    
-    if(!isLogged){
-        return <Navigate to="../SignInPage" />
-    }
+function RequireAuth({ children}) {
+   
+    const usuarioCookie = Cookies.get('user');
+    console.log("cookies:",usuarioCookie)
+    if (!usuarioCookie) {
+        return <Navigate to="../signInPage"/>
+     }
+     
+     return children;
 
-    return children;
 }
 
 export default RequireAuth;

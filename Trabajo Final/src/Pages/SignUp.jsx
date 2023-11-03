@@ -7,38 +7,52 @@ import axios from "axios"
 
 
 
+
 function SignUp() {
-  const [name,setName] = useState ()
+  const [username,setName] = useState ()
   const [email,setEmail]=useState()
   const [password,setPassword]=useState()
   const navigate = useNavigate();
 
+ const handleChangeUsername = (event)=>  {
+    setName(event.target.value);
+  };
+  const handleChangePassword = (event)=>  {
+    setPassword(event.target.value);
+  };
+  const handleChangeEmail = (event)=>  {
+    setEmail(event.target.value);
+  };
+  
   const handleSubmit = (e)=> {
-    e.preventDefauelt()
-    axios.post('http://127.0.0.1:8000/register',{username,email,password})
+    e.preventDefault()
+    const user = {
+      username: username,
+      email: email,
+      password: password,
+      }
+      console.log("usuario",user)
+    axios.post('http://127.0.0.1:8000/register',user)
     .then(result => {console.log(result)
+      console.log(user);
       navigate("/SignInPage")
     })
     .catch(err => console.log(err))
   }
-  /*const [count, setCount] = useState(0)
-
-
-  
-
-  const login = async () => {
-    const user = {
-      username: "user1",
-      password: "user1"
-    }
-    const login = await axios.post("http://127.0.0.1:8000/login", user)
-    console.log(login);
-  }*/
+ 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
+<Form.Group className="mb-3" controlId="formBasicUsername">
+  <Form.Label >Username</Form.Label>
+  <Form.Control onChange={handleChangeUsername}type="text" placeholder="Enter Username" />
+  <Form.Text className="text-muted">
+  This name is what all other users will see you with
+  </Form.Text>
+
+</Form.Group>
 <Form.Group className="mb-3" controlId="formBasicEmail">
-  <Form.Label onSubmit={handleSubmit}>Username</Form.Label>
-  <Form.Control type="text" placeholder="Enter Username" />
+  <Form.Label >Email</Form.Label>
+  <Form.Control onChange={handleChangeEmail} type="email" placeholder="Enter Email" />
   <Form.Text className="text-muted">
   This name is what all other users will see you with
   </Form.Text>
@@ -46,8 +60,8 @@ function SignUp() {
 </Form.Group>
 
 <Form.Group className="mb-3" controlId="formBasicPassword">
-  <Form.Label onSubmit={handleSubmit}>Password</Form.Label>
-  <Form.Control  type="password" placeholder="Password" />
+  <Form.Label >Password</Form.Label>
+  <Form.Control  onChange={handleChangePassword}type="password" placeholder="Password" />
 </Form.Group>
 <Form.Group className="mb-3" controlId="formBasicCheckbox">
   <Form.Check type="checkbox" label="Check me out" />

@@ -10,13 +10,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useDebounce } from "../hooks/useDebounce";
 import { useSearchParams } from "react-router-dom";
+import Cookies from 'js-cookie';
+
 
 
 const Logotipo = Logo;
 function NavScroll() {
   const [query, setQuery] = useSearchParams();
   const search = query.get("search");
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -44,12 +46,7 @@ function NavScroll() {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Planes de pago
-          
-            </Nav.Link>
-          </Nav>
-          <Form className="d-flex"  onSubmit={handleSubmit}> 
+            <Form className="d-flex"  onSubmit={handleSubmit}> 
             <Form.Control
               type="search"
               placeholder="Buscar"
@@ -66,7 +63,14 @@ function NavScroll() {
             
             <Button  variant="outline-danger" >Search</Button>
           </Form>
+            
+          </Nav>
           
+          
+          <Nav.Link href="/SignInPage" >
+            <Button  onClick={Cookies.remove('user')}variant="outline-danger" >LogOut</Button>
+          
+            </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

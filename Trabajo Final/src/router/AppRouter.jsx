@@ -18,15 +18,15 @@ function AppRouter() {
         <Router>
             <NavScroll/>
             <Routes>
-            <Route path="SignInPage" element={<SignInPage />}/>
+                <Route path="SignInPage" element={<SignInPage />}/>
                 <Route path="SignUp" element={<SignUp />}/>
-            
-                <Route path="/"element={<RequireAuth isLogged={false} children ={<Home/>}  />}/>
-                <Route exact path="/movie" element={<RequireAuth isLogged={false} children ={<LandingPage/>}  />} />
-                <Route exact path="/movies/:movieId" element={<RequireAuth isLogged={false} children ={<MovieDetails/>}  />}/>
+                <Route path="/"element={<RequireAuth  children ={<Home/>}  />}/>
+                <Route exact path="/movie" element={<RequireAuth  children ={<LandingPage/>}  />} />
+                <Route exact path="/movies/:movieId" element={<RequireAuth  children ={<MovieDetails/>}  />}/>
                 <Route path="*" element={<ErrorPage/>} />
             </Routes>
-            <Footer/>    
+            <Footer/>
+            
         </Router>
     );
 }
