@@ -18,10 +18,20 @@ const Logotipo = Logo;
 function NavScroll() {
   const [query, setQuery] = useSearchParams();
   const search = query.get("search");
+  const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+ 
+  const handleLogOut = (e)=>{
+    e.preventDefault()
+   const user ={username: "",
+    password: ""}
+    Cookies.set('user',JSON.stringify(user));
+    navigate("/SignInPage")
+    
+  }
+  
+    
+ 
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
       <Container fluid>
@@ -46,7 +56,7 @@ function NavScroll() {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <Form className="d-flex"  onSubmit={handleSubmit}> 
+            <Form className="d-flex"  > 
             <Form.Control
               type="search"
               placeholder="Buscar"
@@ -67,10 +77,10 @@ function NavScroll() {
           </Nav>
           
           
-          <Nav.Link href="/SignInPage" >
-            <Button  onClick={Cookies.remove('user')}variant="outline-danger" >LogOut</Button>
           
-            </Nav.Link>
+            <Button onClick={handleLogOut} variant="outline-danger" >LogOut</Button>
+          
+            
         </Navbar.Collapse>
       </Container>
     </Navbar>

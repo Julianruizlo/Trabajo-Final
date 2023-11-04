@@ -25,13 +25,14 @@ function MovieContainer({ search }) {
   }
   return (    
      <Carousel fade>
-      {movies&& movies.map(movie => (
-        <Carousel.Item>
+      {movies&& movies.map((movie,key)=> (
+        <Carousel.Item key={key} >
       <img src={getMovieImg(movie.backdrop_path, 500)} />
       <Carousel.Caption>
         <h3>{movie.title}</h3>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </Carousel.Caption>
+      
     </Carousel.Item>
       ))}
   </Carousel>

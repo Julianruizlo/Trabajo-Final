@@ -41,6 +41,7 @@ function SignUp() {
   }
  
   return (
+    <div className="d-flex justify-content-center align-items-center vh-100">
     <Form onSubmit={handleSubmit}>
 <Form.Group className="mb-3" controlId="formBasicUsername">
   <Form.Label >Username</Form.Label>
@@ -73,6 +74,7 @@ function SignUp() {
 Already Have an Account? <Link to="/SignInPage" >Sign In</Link>
   </p>
 </Form>
+</div>
 );
 }
    

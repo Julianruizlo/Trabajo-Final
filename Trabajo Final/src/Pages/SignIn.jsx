@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 
 
 
+
 export function SignInPage() {
   const [username,setName] = useState ()
  
@@ -31,7 +32,7 @@ export function SignInPage() {
       }
    console.log("usuarios:",user)
     axios.post('http://127.0.0.1:8000/login',user)
-    .then(result => {Cookies.set('user', result, { secure: true });
+    .then(result => {Cookies.set('user', JSON.stringify(result));
     navigate("/");
       console.log(user);
 
@@ -40,8 +41,8 @@ export function SignInPage() {
   }
  
   return (
-   
-    <Form onSubmit={handleSubmit}>
+  <div className="d-flex justify-content-center align-items-center vh-100">
+    <Form className=""onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control onChange={handleChangeUsername} type="text" placeholder="Enter User" />
@@ -64,6 +65,8 @@ export function SignInPage() {
           Don't have an account? <Link to="/SignUp" >Sign up</Link>
         </p>
     </Form>
+    </div>
+    
   );
 }
 

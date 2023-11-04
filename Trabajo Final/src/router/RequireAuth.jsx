@@ -4,11 +4,16 @@ import Cookies from 'js-cookie';
 
 function RequireAuth({ children}) {
    
-    const usuarioCookie = Cookies.get('user');
+    let usuarioCookie = Cookies.get('user');
     console.log("cookies:",usuarioCookie)
-    if (!usuarioCookie) {
+    if( usuarioCookie){
+        usuarioCookie = JSON.parse(usuarioCookie)
+        if (usuarioCookie.username==""){
+            return <Navigate to="../signInPage"/>
+        }
+    } else {
         return <Navigate to="../signInPage"/>
-     }
+        }
      
      return children;
 

@@ -1,19 +1,42 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFacebook,faInstagram,faTwitter,faLinkedin} from "@fortawesome/free-brands-svg-icons"
-
+import "../modules/Footer.css"
 function Footer() {
     return(
-        <>
-      <footer className="page-footer font-small pt-4 footer"  >
-      <div className="container-fluid text-center text-md-left pt-5 mt-5">
-        <div className="row justify-content-center">
-          <div className="col-md-6 mt-md-0 mt-3">
-            <h5 className="text-uppercase">Información de Contacto</h5>
-            <p>+54 9 (381) 155555555</p>
-            <p>info@pelis.com</p>
-            <p>San Martín 204, San Miguel de Tucumán</p>
-          </div>
-          <div className="col-md-3 mb-md-0 mb-3 footer-links">
+      <div className="footer">
+        <div className="sb__footer section__padding">
+          <div className='sb__footer-links'>
+          <div className='sb__footer-links_div'>
+              <h4>For Business</h4>
+              <a href="">Employers</a>
+              <a href="">Health Plan</a>
+              <a href="">Individual</a>
+            </div>
+            <div className='sb__footer-links_div'>
+            <h4>Resoruces</h4>
+              <a href="">Employers</a>
+              <a href="">Health Plan</a>
+              <a href="">Individual</a>
+            </div>
+            <div className='sb__footer-links_div'>
+            <h4>Parteners</h4>
+              <a href="">Employers</a>
+              
+            </div>
+            <div className='sb__footer-links_div'>
+            <h4>Company</h4>
+              <a href="">Employers</a>
+              <a href="">Health Plan</a>
+              <a href="">Individual</a>
+            </div>
+            <div className='sb__footer-links_div'>
+            <h4>Comign soon on</h4>
+              <a href="">Employers</a>
+              
+            </div>
+            <div className='sb__footer-links_div'>
+            <h4>Social Media</h4>
+            <div className='socialmedia'>
             <a href="#!">
             <FontAwesomeIcon icon={faFacebook} />
             </a>
@@ -26,16 +49,26 @@ function Footer() {
             <a href="#!">
             <FontAwesomeIcon icon={faLinkedin} />
             </a>
+            </div>
+            </div>
           </div>
+
+          <hr ></hr >
+          <div className='sb__footer-below'>
+            <div className='sb__footer-copyright'>
+              <p>@{new Date().getFullYear()} CodeInn. All right reserver</p>
+               </div>
+             
+             <div className='sb__footer-below-links'>
+              <a href=""><div><p>Terms & Conditions</p></div></a>
+              <a href=""><div><p>Privacy</p></div></a>
+              <a href=""><div><p>Security</p></div></a>
+              <a href=""><div><p>Terms & Conditions</p></div></a>
+             </div>
+             </div>
         </div>
       </div>
-      <div className="footer-copyright text-center py-3">
-        © 2022 Copyright:
-        <a href="">peliculas.com</a>
-      </div>
-    </footer>
-        </>
-    )
-        
+     
+  );
 }
 export default Footer;
