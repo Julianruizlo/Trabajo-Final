@@ -1,16 +1,22 @@
 import "../modules/Home.css"
-import banner from "../Images/netflix-junio.jpg"
+
 function Home() {
     return (
         <>
-                
-            <main>
-                <img src={banner} className="banner" />
-                <div>
-                <h2 className="title">Bienvenido a CineMundo, tu destino definitivo para la magia del cine. En CineMundo, te sumergirás en el emocionante mundo del séptimo arte, donde encontrarás una amplia selección de películas, información detallada y la última novedad sobre el cine.</h2>
-                
-                </div>
+<div className="containerStyle">
+      <header>
+        <h1>Bienvenidos</h1>
+        <h2>Somos Pelis Plus</h2>
+        
+        <p>hola hola hola</p>
+      </header>
+      <div></div>
+    </div>
+  
+<main>
+               
 <div>
+<h2 className="title">Bienvenido a Pelicula Plus, tu destino definitivo para la magia del cine. En Peliculas Plus, te sumergirás en el emocionante mundo del séptimo arte, donde encontrarás una amplia selección de películas, información detallada y la última novedad sobre el cine.</h2>
 Características Destacadas:
 
 <ul className="feature-list"><li><strong>Explora una Amplia Gama de Películas</strong>: En CineMundo, te ofrecemos una extensa colección de películas de todos los géneros, desde emocionantes blockbusters hasta conmovedoras películas independientes. ¡Siempre encontrarás algo que se adapte a tus gustos!</li>

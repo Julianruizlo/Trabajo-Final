@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 import { useDebounce } from "../hooks/useDebounce";
 import { useSearchParams } from "react-router-dom";
 import Cookies from 'js-cookie';
-
+import "../modules/Login.css"
 
 
 const Logotipo = Logo;
@@ -35,7 +35,7 @@ function NavScroll() {
   return (
     <Navbar bg="dark" expand="lg" data-bs-theme="dark" className="navbar-expand-sm"  >
       <Container fluid>
-        <Navbar.Brand ><img src={Logotipo} alt="Logo" width={'100px'}  /></Navbar.Brand>
+        <Navbar.Brand ><img src={Logotipo} alt="Logo" width={'60px'}  /></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -44,23 +44,14 @@ function NavScroll() {
             navbarScroll
           >
             
-            <Link className="nav-link" to={""} >Inicio</Link>
+            <Link className="nav-link" to={"/"} >Inicio</Link>
             <Link className="nav-link" to={"/movie"}>Peliculas</Link>
-            <NavDropdown title="Categorias" id="navbarScrollingDropdown">
-              <NavDropdown.Item Link to ={"#action3"}>Accion</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-               Terror
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
+            
             <Form className="d-flex"  > 
             <Form.Control
               type="search"
               placeholder="Buscar"
-              className="me-2"
+              className="me-3"
               aria-label="Search"
               onChange={(e) => {
                 const value = e.target.value;
@@ -71,14 +62,14 @@ function NavScroll() {
              
             />
             
-            <Button  variant="outline-danger" >Search</Button>
+            <Button className='sm' variant="outline-danger" >Search</Button>
           </Form>
             
           </Nav>
           
           
           
-            <Button onClick={handleLogOut} variant="outline-danger" >LogOut</Button>
+            <Button onClick={handleLogOut} variant="outline-danger" className='sm' >LogOut</Button>
           
             
         </Navbar.Collapse>

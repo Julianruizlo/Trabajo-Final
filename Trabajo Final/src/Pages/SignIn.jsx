@@ -5,7 +5,7 @@ import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Cookies from 'js-cookie';
-
+import "../modules/Login.css"
 
 
 
@@ -40,34 +40,27 @@ export function SignInPage() {
     .catch(err => console.log(err))
   }
  
-  return (
-  <div className="d-flex justify-content-center align-items-center vh-100">
-    <Form className=""onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control onChange={handleChangeUsername} type="text" placeholder="Enter User" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control onChange={handleChangePassword}  type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button  variant="primary" type="submit">
-        Submit
-      </Button>
-      <p >
-          Don't have an account? <Link to="/SignUp" >Sign up</Link>
-        </p>
-    </Form>
-    </div>
-    
-  );
+  
+return (
+  <main className="main">
+  <div>
+  <div className="back">
+      <form action="#" onSubmit={handleSubmit}>
+          <h1>Iniciar Sesion</h1>
+          <div className="contenedor">
+              <input  onChange={handleChangeUsername}  type="text" placeholder="Usuario" required/>
+          </div>
+          <div className="contenedor">
+              <input onChange={handleChangePassword} type="password" placeholder="Contraseña" required/>
+          </div>
+        <Link to={"/SignUp"}> ¿No tienes una cuenta? </Link>
+          <button type="submit" className="button">Ingresar</button>
+      </form>
+      
+   </div>
+  </div>
+</main>
+);
 }
 
 export default SignInPage;

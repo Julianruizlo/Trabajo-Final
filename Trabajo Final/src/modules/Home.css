@@ -3,27 +3,38 @@ background-color:black ;
 color: #fff;
 
 }
+.containerStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 10px 10px 10px;
+  background-image: url("../Images/Banner.jpeg");
+  background-size: cover;
+}
 
 .title{
     text-align: center;
     font-size: 3rem;
     
 }
-.container{
-    margin: 100px;
-    display: inline-flex;
-
+.containerStyle header{
+  text-align:center;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color:aliceblue;
+  margin-left: 10px;
+  width: 430px;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgb(0,0,0,.3);
+  border-radius: 10px;
+  padding: 30px 40px;
 }
-.banner {
-  width: 100vw;
-  height: auto;
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
-  display: block;
-  border: none;
-  }
-  
+.containerStyle h1{
+  font-size: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
   main {
     padding: 20px;
@@ -63,3 +74,61 @@ color: #fff;
   p a:hover {
     text-decoration: underline;
   }
+
+  
+    .contenedor input {
+      padding: 15px 30px 15px 15px;
+      font-size: 13px;
+    }
+  
+    .button {
+      height: 40px;
+      font-size: 14px;
+    }
+    .custom-navbar {
+      background-color: #333;
+    }
+    
+    .custom-navbar .navbar-brand img {
+      width: 60px;
+    }
+    
+    .custom-navbar .nav-link {
+      color: #fff;
+      margin-right: 15px;
+    }
+    
+    .custom-navbar .form-control {
+      background-color: #444;
+      color: #fff;
+    }
+    
+    .custom-navbar .btn-outline-danger {
+      color: #fff;
+      padding: 0.2rem 0.5rem; /* Ajusta el relleno para hacer los botones más pequeños */
+      font-size: 0.8rem; /* Ajusta el tamaño de fuente para hacer los botones más pequeños */
+    }
+    
+    /* Estilos para pantallas pequeñas (menos de 768px de ancho) */
+    @media (max-width: 767px) {
+      .custom-navbar .navbar-collapse {
+        background-color: #333;
+      }
+    
+      .custom-navbar .navbar-collapse .navbar-nav .nav-link {
+        color: #fff;
+        margin: 10px 0;
+      }
+    
+      .custom-navbar .navbar-collapse .navbar-nav .nav-link:hover {
+        color: #ff4848;
+      }
+    
+      .custom-navbar .navbar-collapse .navbar-nav .btn-outline-danger {
+        padding: 0.2rem 0.5rem; 
+        font-size: 0.8rem; 
+    }
+  }
+    
+    
+  

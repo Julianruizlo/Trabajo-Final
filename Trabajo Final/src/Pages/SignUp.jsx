@@ -41,40 +41,28 @@ function SignUp() {
   }
  
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
-    <Form onSubmit={handleSubmit}>
-<Form.Group className="mb-3" controlId="formBasicUsername">
-  <Form.Label >Username</Form.Label>
-  <Form.Control onChange={handleChangeUsername}type="text" placeholder="Enter Username" />
-  <Form.Text className="text-muted">
-  This name is what all other users will see you with
-  </Form.Text>
-
-</Form.Group>
-<Form.Group className="mb-3" controlId="formBasicEmail">
-  <Form.Label >Email</Form.Label>
-  <Form.Control onChange={handleChangeEmail} type="email" placeholder="Enter Email" />
-  <Form.Text className="text-muted">
-  This name is what all other users will see you with
-  </Form.Text>
-
-</Form.Group>
-
-<Form.Group className="mb-3" controlId="formBasicPassword">
-  <Form.Label >Password</Form.Label>
-  <Form.Control  onChange={handleChangePassword}type="password" placeholder="Password" />
-</Form.Group>
-<Form.Group className="mb-3" controlId="formBasicCheckbox">
-  <Form.Check type="checkbox" label="Check me out" />
-</Form.Group>
-<Button variant="primary" type="submit">
-  Submit
-</Button>
-<p >
-Already Have an Account? <Link to="/SignInPage" >Sign In</Link>
-  </p>
-</Form>
-</div>
+    
+<main className="main">
+  <div>
+  <div className="back">
+      <form action="#" onSubmit={handleSubmit}>
+          <h1>Registrate</h1>
+          <div className="contenedor">
+              <input  onChange={handleChangeUsername}  type="text" placeholder="Usuario" required/>
+          </div>
+          <div className="contenedor">
+              <input  onChange={handleChangeEmail} type="emaiñ" placeholder="Email" required/>
+          </div>
+          <div className="contenedor">
+              <input onChange={handleChangePassword} type="password" placeholder="Contraseña" required/>
+          </div>
+        <Link to={"/SignInPage"}> ¿No tienes una cuenta? </Link>
+          <button type="submit" className="button">Ingresar</button>
+      </form>
+      
+   </div>
+  </div>
+</main>
 );
 }
    
